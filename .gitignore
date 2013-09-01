@@ -4,3 +4,10 @@
 *.jar
 *.war
 *.ear
+
+out
+*.iml
+*.ipr
+*.iws
+
+minecraft
