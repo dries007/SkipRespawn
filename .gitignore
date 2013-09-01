@@ -5,9 +5,17 @@
 *.war
 *.ear
 
+.gradle
+
 out
 *.iml
 *.ipr
 *.iws
+
+build/tmp
+build/resources
+build/dependency-cache
+build/classes
+!build/libs/*.*
 
 minecraft

@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+    dependencies {
+		classpath 'com.github.abrarsyed.gmcp:GMCP:0.7.4-SNAPSHOT'
+    }
+}
+
+apply plugin: "gmcp"
+
+group = 'net.dries007.skiprespawn'
+
+archivesBaseName = 'SkipRespawn'
+minecraft.minecraftVersion = '1.6.2'
+
+processResources{}
+
+jar {
+	manifest 
+	{
+        attributes("FMLCorePlugin": "net.dries007.skiprespawn.SkipRespawn")
+    }
+}
+
+// because the normal default jar task has been modified to be obfuscated
+task deobfJar(type: Jar) {
+	from sourceSets.main.output
+	appendix = 'deobf'
+	
+	manifest 
+	{
+        attributes("FMLCorePlugin": "net.dries007.skiprespawn.SkipRespawn")
+    }
+}
+
+artifacts {
+	archives deobfJar
+}
